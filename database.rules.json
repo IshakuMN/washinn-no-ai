@@ -1,6 +1,12 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    ".read": true,
+    ".write": true,
+    "projects": {
+      ".indexOn": ["ownerId"]
+    },
+    "tasks": {
+      ".indexOn": ["projectId", "assigneeId"]
+    }
   }
 }

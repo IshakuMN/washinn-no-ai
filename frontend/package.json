@@ -10,7 +10,7 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@dataconnect/generated": "file:src/dataconnect-generated",
+    "firebase": "^12.8.0",
     "nuxt": "^4.2.2",
     "vue": "^3.5.27",
     "vue-router": "^4.6.4"
