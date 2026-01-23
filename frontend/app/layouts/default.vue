@@ -4,8 +4,18 @@
       <h3>WashInn Menu</h3>
       <nav>
         <ul>
+          <!-- Standard Routes -->
           <li v-for="route in availableRoutes" :key="route.path">
             <NuxtLink :to="route.path">{{ route.name || route.path }}</NuxtLink>
+          </li>
+
+          <!-- Injected Layer Items (Visual separation for demo) -->
+          <li
+            v-for="item in layerMenuItems"
+            :key="item.path"
+            class="layer-item"
+          >
+            <NuxtLink :to="item.path">★ {{ item.name }}</NuxtLink>
           </li>
         </ul>
       </nav>
@@ -27,6 +37,14 @@ const availableRoutes = computed(() => {
     .filter((r) => !r.path.includes("api"))
     .filter((r) => !r.path.includes(":")) // Simple menu, skip dynamic params
     .sort((a, b) => a.path.localeCompare(b.path));
+});
+
+// Layer Menu Injection (Step 10)
+const layerMenuItems = computed(() => {
+  if (typeof useLayerMenu === "function") {
+    return useLayerMenu();
+  }
+  return [];
 });
 </script>
 
